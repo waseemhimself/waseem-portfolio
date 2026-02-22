@@ -4,6 +4,7 @@ from .database import engine, get_db
 from .models import Base
 from .rag import get_similar_chunks
 import os
+import uvicorn
 from dotenv import load_dotenv
 from openai import OpenAI
 from .schemas import ChatRequest
@@ -111,3 +112,8 @@ Answer:
     return {
         "response": response.choices[0].message.content
     }
+
+#Testing for deployment
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
