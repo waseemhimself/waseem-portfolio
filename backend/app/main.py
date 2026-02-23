@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from .schemas import ChatRequest
 from fastapi.middleware.cors import CORSMiddleware
+from app.rag import get_model
+
 
 load_dotenv()
 
@@ -20,6 +22,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.on_event("startup")
+def preload_model():
+    get_model()
 
 client = OpenAI(
     api_key=os.getenv("OPENROUTER_API_KEY"),
