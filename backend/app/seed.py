@@ -8,7 +8,7 @@ resume_sections = [
     ("education_overview",
      "Waseem Khan is pursuing a Bachelor of Technology in Computer Science and Engineering at Woxsen University (2023-2027) with a CGPA of 9.3/10."),
 
-        # Tracks Project
+    # Tracks Project
 
     ("tracks_overview",
      "Tracks is a full-stack finance expense tracking system designed with a focus on clarity, usability, and analytics."),

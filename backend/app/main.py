@@ -4,7 +4,6 @@ from .database import engine, get_db
 from .models import Base
 from .rag import get_similar_chunks
 import os
-import uvicorn
 from dotenv import load_dotenv
 from openai import OpenAI
 from .schemas import ChatRequest
@@ -90,7 +89,7 @@ def chat(request: ChatRequest, db: Session = Depends(get_db)):
 You are an AI assistant that answers strictly based on the provided resume context.
 
 If the answer is not present in the context, respond with:
-"The requested information is not available in Waseem's resume."
+The requested information is not available in Waseem's resume.
 
 Resume Context:
 {context}
@@ -112,8 +111,3 @@ Answer:
     return {
         "response": response.choices[0].message.content
     }
-
-#Testing for deployment
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
